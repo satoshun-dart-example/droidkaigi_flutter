@@ -15,4 +15,20 @@ class SessionInfo {
   final RoomResponse room;
   final List<SpeakerResponse> speakers;
   final List<CategoryItemResponse> categories;
+
+  String speakerIcon() {
+    if (speakers.isEmpty) {
+      return '';
+    } else {
+      return speakers[0].profilePicture;
+    }
+  }
+
+  String speakerName() {
+    if (speakers.isEmpty) {
+      return '';
+    } else {
+      return speakers[0].fullName;
+    }
+  }
 }

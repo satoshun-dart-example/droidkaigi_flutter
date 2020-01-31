@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:confsched2020/model/localed_response.dart';
 
@@ -47,5 +48,22 @@ class SessionResponse {
   final String slideUrl;
 
   DateTime get startsAtDate => DateTime.parse(startsAt).toLocal();
+
   DateTime get endsAtDate => DateTime.parse(endsAt).toLocal();
+
+  String get startsAtString => DateFormat('Hm').format(startsAtDate);
+
+  String get durationString =>
+      endsAtDate
+          .difference(startsAtDate)
+          .inMinutes
+          .toString();
+
+  String getSpeakerName() {
+    if (speakers.isEmpty) {
+      return '';
+    } else {
+      return speakers[0];
+    }
+  }
 }

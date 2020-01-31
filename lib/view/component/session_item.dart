@@ -20,10 +20,30 @@ class SessionItem extends StatelessWidget {
           onSessionPressed != null ? () => onSessionPressed(sessionInfo) : null,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: Text(
-          sessionInfo.session.title.by(context),
-          style: context.theme.textTheme.title,
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('${sessionInfo.session.startsAtString}'),
+                ),
+                Text('${sessionInfo.session.durationString}min')
+              ],
+            ),
+            Text(sessionInfo.session.title.ja),
+            Row(
+              children: <Widget>[
+                Image(image: NetworkImage(sessionInfo.speakerIcon())),
+                Text(sessionInfo.speakerName())
+              ],
+            )
+          ],
         ),
+//        Text(
+//          sessionInfo.session.title.by(context),
+//          style: context.theme.textTheme.title,
+//        ),
       ),
     );
   }
