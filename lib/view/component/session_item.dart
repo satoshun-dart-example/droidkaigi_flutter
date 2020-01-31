@@ -31,11 +31,29 @@ class SessionItem extends StatelessWidget {
                 Text('${sessionInfo.session.durationString}min')
               ],
             ),
-            Text(sessionInfo.session.title.ja),
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                sessionInfo.session.title.ja,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 8),
+            ),
             Row(
               children: <Widget>[
-                Image(image: NetworkImage(sessionInfo.speakerIcon())),
-                Text(sessionInfo.speakerName())
+                ClipOval(
+                  child: Image(
+                    image: NetworkImage(sessionInfo.speakerIcon()),
+                    width: 32,
+                    height: 32,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: Text(sessionInfo.speakerName()),
+                ),
               ],
             )
           ],
